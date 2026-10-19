@@ -2,7 +2,7 @@
 const xml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const dollars=n=>'$'+n.toLocaleString('en-US');
 export function resultText({players,cost,rank,win,seat,playUrl}){
-  return `My PICKLES Cap Lab draft\nPosition ${seat} · #${rank} of 20\n${dollars(cost)} roster · ${(win*100).toFixed(1)}% estimated win rate\n\n${players.map(p=>`${p.n} — ${dollars(p.p)}`).join('\n')}\n\nEstimated match-win rate against the other 19 teams in this draft. Ratings and prices: October 7, 2026.${playUrl?`\n\nTry a draft: ${playUrl}`:''}`;
+  return `My PICKLES Cap Lab draft\nPosition ${seat} · #${rank} of 20\n${dollars(cost)} roster · ${(win*100).toFixed(1)}% estimated win rate\n\n${players.map(p=>`${p.n}: ${dollars(p.p)}`).join('\n')}\n\nEstimated match-win rate against the other 19 teams in this draft. Ratings and prices: October 7, 2026.${playUrl?`\n\nTry a draft: ${playUrl}`:''}`;
 }
 export function resultSvg({players,cost,rank,win,seat}){
   const row=(p,i)=>`<text x="64" y="${350+i*58}" font-size="15" fill="#647566">${String(i+1).padStart(2,'0')}</text><text x="112" y="${350+i*58}" font-size="24" fill="#243e31">${xml(p.n)}</text><text x="697" y="${350+i*58}" text-anchor="end" font-size="19" fill="#5b6d5f">${dollars(p.p)}</text><path d="M64 ${369+i*58}H698" stroke="#d6ddcf"/>`;

@@ -9,6 +9,6 @@ export function singlesEvidence(p){
   const recent=p.sg||0,total=p.sc||0;
   const date=p.sl?new Date(p.sl+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}):null;
   const record=recent?`${count(recent,'recorded 2026 singles game')}. Singles rank is within gender, among players with a recorded 2026 singles game.`:`No recorded 2026 singles games, so no singles rank is shown. ${total?`${count(total,'historical singles game')}; last recorded ${date}.`:'No recorded singles games in this snapshot.'}`;
-  const db=p.db?`DreamBreaker evidence is separate: ${count(p.db,'recorded rally','recorded rallies')}, including ${p.db26||0} in 2026.`:'No recorded DreamBreaker rallies in this snapshot.';
-  return `${record} ${db} The match model still uses a projected singles ability; not ranked does not mean no singles ability. Records are through October 7, 2026.`;
+  const db=p.db?`Recorded DreamBreaker play: ${count(p.db,'recorded rally','recorded rallies')}, including ${p.db26||0} in 2026.`:'No recorded DreamBreaker rallies in this snapshot.';
+  return `${record} ${db} The match model uses an estimated singles rating even when no rank is shown. Records are through October 7, 2026.`;
 }

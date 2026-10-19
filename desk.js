@@ -1,8 +1,8 @@
-import {singlesRank,singlesEvidence} from './singles-evidence.js?v=singles-20261019b';
+import {singlesRank,singlesEvidence} from './singles-evidence.js?v=plain-copy-20261019';
 import {rankingsSealed} from './desk-state.js';
 import {features,matchup} from './engine.js';
-import {resultPng,resultText} from './desk-result.js?v=club-20261019';
-import {initTour} from './desk-tour.js?v=faq-20261019';
+import {resultPng,resultText} from './desk-result.js?v=plain-copy-20261019';
+import {initTour} from './desk-tour.js?v=plain-copy-20261019';
 import {activityWindow} from './room-activity.js';
 const $=id=>document.getElementById(id),money=n=>'$'+n.toLocaleString('en-US'),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let finalKey='',roomContext=null,allActivity=false,inspectedFocus=null;
@@ -26,10 +26,10 @@ document.addEventListener('cap-draft-render',({detail:r})=>{
   const model={players,cost:r.cost,rank:your.rank,win:your.win,seat:r.state.seat,playUrl:new URL('draft.html',location.href).href};
   $('desk-finish').innerHTML=`<article class="finish-sheet"><div class="finish-top"><div><p class="eyebrow">Draft complete · Your position: ${r.state.seat}</p><h2>Your team ranked ${your.rank} out of 20.</h2></div><div class="finish-stats"><div class="finish-stat"><strong>#${your.rank}<small> /20</small></strong><span>Final rank</span></div><div class="finish-stat"><strong>${(your.win*100).toFixed(1)}%</strong><span>Expected win rate</span></div></div></div><div class="finish-columns"><section><h3>${money(r.cost)} spent · Your team</h3><ol class="finish-roster">${players.map(p=>`<li><span>${esc(p.n)}</span><span class="cost">${money(p.p)}</span></li>`).join('')}</ol></section><section><h3>Suggested lineup</h3>${['Women','Men','Mixed 1','Mixed 2'].map((label,i)=>`<div class="lineup"><span>${label}</span><span>${f.pairs[i].map(p=>esc(p.n)).join(' + ')}</span></div>`).join('')}<p class="finish-db"><b>DreamBreaker order</b><br>${f.dbPlayers.map(p=>esc(p.n)).join(' → ')}</p></section></div><div class="finish-actions"><button id="play-again">Draft again</button><a class="primary-link" href="build.html#v=3&p=${r.ids.join(',')}">Try different combinations →</a><button id="save-card">Download result card</button><button id="copy-result">Copy result</button><button id="copy-team">Copy team link</button></div><p class="finish-note">${(your.win*19).toFixed(1)} expected wins in a 19-match round robin against these drafted teams. These are model estimates, not championship chances.</p><p id="share-status" role="status" aria-live="polite"></p></article>`;
   $('play-again').onclick=()=>$('start').click();
-  $('save-card').onclick=async()=>{const button=$('save-card');button.disabled=true;$('share-status').textContent='Preparing your result card…';try{const blob=await resultPng(model),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='pickles-draft-result.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Your result card is downloaded.'}catch{$('share-status').textContent='We couldn’t make the image. Please try again, or use Copy result.'}finally{button.disabled=false}};
+  $('save-card').onclick=async()=>{const button=$('save-card');button.disabled=true;$('share-status').textContent='Preparing your result card…';try{const blob=await resultPng(model),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='pickles-draft-result.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('share-status').textContent='Result card downloaded.'}catch{$('share-status').textContent='We couldn’t make the image. Please try again, or use Copy result.'}finally{button.disabled=false}};
   const copy=async(text,done)=>{try{await navigator.clipboard.writeText(text);$('share-status').textContent=done}catch{$('share-status').textContent=text}};
-  $('copy-result').onclick=()=>copy(resultText(model),'Your result is copied.');
-  $('copy-team').onclick=()=>copy(new URL('build.html',location.href).href+'#v=3&p='+r.ids.join(','),'Team link copied. Anyone with access to this site can open the roster.');
+  $('copy-result').onclick=()=>copy(resultText(model),'Result copied.');
+  $('copy-team').onclick=()=>copy(new URL('build.html',location.href).href+'#v=3&p='+r.ids.join(','),'Team link copied. Anyone with the link can open this roster.');
 });
 function renderActivity(r){
   const w=activityWindow(r.state),list=allActivity?w.picks:w.picks.slice(-4);
@@ -60,11 +60,11 @@ function inspectTeam(t){
 }
 function inspectPlayer(id){
   const r=roomContext,p=r?.data.players[id];if(!p)return;const owner=r.state?.teams.findIndex(ids=>ids.includes(id))??-1,pick=r.state?.picks.find(q=>q.id===id);
-  inspect(p.n,`<p class="eyebrow">${p.g==='F'?'WOMEN':'MEN'} · DOUBLES #${p.dr} · SINGLES ${singlesRank(p)}</p><h3>${money(p.p)}</h3>${owner>=0?`<p class="taken-label">${owner===r.state.seat-1?'On your roster':`Drafted by Team ${owner+1}`} · Round ${pick.round}, pick ${pick.pick}</p>`:'<p>This player hasn’t been picked. Your budget and remaining roster spots determine whether you can add them.</p>'}<div class="lineup"><span>Roster spot baseline</span><span>${money(p.base)}</span></div><div class="lineup"><span>Performance value</span><span>${money(p.premium)}</span></div><div class="lineup"><span>Singles adjustment</span><span>${p.singlesAdj<0?'−':'+'}${money(Math.abs(p.singlesAdj))}</span></div><p class="note">${singlesEvidence(p)}</p><p class="note">Performance value includes the singles ability expected at this doubles rating; the singles adjustment accounts for being above or below that expectation. Confidence is shown separately. Ratings and prices are from October 7, 2026.</p>`);
+  inspect(p.n,`<p class="eyebrow">${p.g==='F'?'WOMEN':'MEN'} · DOUBLES #${p.dr} · SINGLES ${singlesRank(p)}</p><h3>${money(p.p)}</h3>${owner>=0?`<p class="taken-label">${owner===r.state.seat-1?'On your roster':`Drafted by Team ${owner+1}`} · Round ${pick.round}, pick ${pick.pick}</p>`:'<p>This player hasn’t been picked. Your budget and remaining roster spots determine whether you can add them.</p>'}<div class="lineup"><span>Roster spot baseline</span><span>${money(p.base)}</span></div><div class="lineup"><span>Performance value</span><span>${money(p.premium)}</span></div><div class="lineup"><span>Singles adjustment</span><span>${p.singlesAdj<0?'−':'+'}${money(Math.abs(p.singlesAdj))}</span></div><p class="note">${singlesEvidence(p)}</p><p class="note">Performance value includes the singles ability expected at this doubles rating. The singles adjustment accounts for being above or below that expectation. Confidence is shown separately. Ratings and prices are from October 7, 2026.</p>`);
 }
 document.addEventListener('click',e=>{
   const team=e.target.closest('[data-rival]'),player=e.target.closest('[data-scout]');
   if(team)inspectTeam(+team.dataset.rival);else if(player)inspectPlayer(+player.dataset.scout);
 });
 initTour();
-await import('./draft.js?v=final-qa-20261019');
+await import('./draft.js?v=plain-copy-20261019');

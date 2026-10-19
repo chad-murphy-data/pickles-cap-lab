@@ -4,7 +4,7 @@
 <text x="64" y="80" font-size="30" font-weight="600">PICKLES</text><text x="225" y="79" font-size="20" fill="#5b6d5f">cap lab</text>
 <path d="M64 112H1136" stroke="#d6ddcf"/>
 <text x="64" y="223" font-family="Georgia, serif" font-size="76">Who’s on your team?</text>
-<text x="64" y="282" font-size="28" fill="#5b6d5f">Build an MLP-style team with players you love watching.</text>
+<text x="64" y="282" font-size="28" fill="#5b6d5f">Build an MLP-style team under a $1 million value cap.</text>
 <g transform="rotate(-.7 320 410)"><rect x="64" y="341" width="514" height="152" rx="10" fill="#e8edde"/><rect x="76" y="353" width="490" height="128" rx="5" fill="#fffef9"/><text x="99" y="402" font-size="28">Build your dream team</text><text x="99" y="445" font-size="20" fill="#5b6d5f">Try combinations. Get a team score.</text></g>
 <rect x="610" y="341" width="526" height="152" rx="10" fill="#214a37"/><text x="637" y="402" font-size="28" fill="#f2f2e5">Draft against the computer</text><text x="637" y="445" font-size="20" fill="#c4d6c3">Make your picks alongside 19 other teams.</text>
 <path d="M64 539H1136" stroke="#d6ddcf"/><text x="64" y="579" font-size="21" fill="#5b6d5f">3 women + 3 men · $500k–$1M · Fantasy prices, not salaries.</text>
