@@ -1,0 +1,139 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ============================================================
+   PICKLES — green-bar printout theme
+   Drop-in replacement for the CSS string in web/sitelib/style.py.
+   All original selectors kept; light + dark both defined.
+   ============================================================ */
+
+:root{--page: #f2f7e5; --surface: #fbfdf3; --ink: #16321e; --ink2: #46603a;
+  --muted: #7c8f6d; --grid: #dbe7c2; --baseline: #a9bc8c;
+  --border: rgba(22,50,30,0.18);
+  --s1: #1e7a3c; --s2: #c05621; --loss: #e03a2f;
+  --good: #1e7a3c; --bad: #d03b3b; --warn: #a36b00;
+  --band: rgba(30,122,60,0.16); --wash: rgba(22,50,30,0.05);
+  --stripe: rgba(30,122,60,0.055);
+  --hl: #d9f154; --hl-ink: #16321e;}
+:root[data-theme="dark"]{--page: #0e1410; --surface: #17211a; --ink: #edf4e0; --ink2: #c2d3a8;
+  --muted: #8aa07a; --grid: #26332a; --baseline: #3a4a3c;
+  --border: rgba(237,244,224,0.14);
+  --s1: #cfe94f; --s2: #e8935a; --loss: #e66767;
+  --good: #7fc24a; --bad: #e66767; --warn: #d9a03f;
+  --band: rgba(217,241,84,0.16); --wash: rgba(237,244,224,0.06);
+  --stripe: rgba(217,241,84,0.05);
+  --hl: #d9f154; --hl-ink: #16321e;}
+* { box-sizing: border-box; }
+::selection { background: var(--hl); color: var(--hl-ink); }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.55 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--s1); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 2px;
+  text-decoration-color: var(--hl); }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+header.site { border-bottom: 3px double var(--ink); background: var(--surface); }
+header.site .wrap { display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 4px 18px; padding: 12px 16px; }
+header.site .brand { font-family: "DM Mono", ui-monospace, monospace;
+  font-weight: 700; font-size: 16px; background: var(--hl); color: var(--hl-ink);
+  padding: 2px 9px; letter-spacing: 0.01em; }
+header.site .brand a { color: inherit; }
+header.site nav { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+header.site nav a { color: var(--ink2); font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; }
+header.site nav a:hover { text-decoration: none; color: var(--ink); }
+header.site nav a.here { color: var(--ink); font-weight: 700;
+  border-bottom: 3px solid var(--hl); }
+.fx-official { margin: 8px 0 2px; padding: 6px 10px; background: var(--band);
+  border-left: 3px solid var(--hl); font-size: 13.5px; }
+.themetog { background: none; border: 1.5px solid var(--border); color: var(--ink2);
+  font-family: "DM Mono", ui-monospace, monospace; font-size: 12px;
+  line-height: 1.4; padding: 1px 8px; cursor: pointer; }
+.themetog:hover { color: var(--ink); border-color: var(--ink2); }
+header.site .wrap .themetog { margin-left: auto; }
+h1 { font-family: "DM Mono", ui-monospace, monospace; font-size: 23px;
+  letter-spacing: 0.01em; margin: 28px 0 4px; }
+h1::before { content: "> "; color: var(--s1); }
+h2 { font-family: "DM Mono", ui-monospace, monospace; font-size: 16px;
+  text-transform: uppercase; letter-spacing: 0.09em; margin: 32px 0 8px;
+  border-bottom: 3px double var(--baseline); padding-bottom: 5px; }
+h3 { font-family: "DM Mono", ui-monospace, monospace; font-size: 13.5px;
+  text-transform: uppercase; letter-spacing: 0.07em; margin: 20px 0 6px; }
+p.sub, .sub { color: var(--ink2); margin-top: 2px; }
+.note { color: var(--ink2); font-size: 13px; }
+.small { font-size: 13px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin: 16px 0; }
+.tile { background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 0; padding: 10px 12px; }
+.tile .v { font-family: "DM Mono", ui-monospace, monospace;
+  font-size: 22px; font-weight: 700; }
+.tile .k { font-family: "DM Mono", ui-monospace, monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink2); margin-top: 3px; }
+.card { background: var(--surface); border: 1.5px dashed var(--baseline);
+  border-radius: 0; padding: 14px 16px; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.tblwrap { overflow-x: auto; }
+th { text-align: left; color: var(--ink2); font-weight: 700;
+  font-family: "DM Mono", ui-monospace, monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  border-bottom: 2px solid var(--ink); padding: 6px 8px; white-space: nowrap; }
+td { padding: 5px 8px; border-bottom: 1px solid var(--grid); vertical-align: middle; }
+tr:nth-child(even) td { background: var(--stripe); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.num { font-family: "DM Mono", ui-monospace, monospace; font-size: 13px; }
+td.gray, .nowrap { white-space: nowrap; }
+svg.chart.capped { max-width: 470px; }
+tr:hover td { background: var(--wash); }
+.chip { display: inline-block; border-radius: 0; padding: 1px 8px;
+  font-family: "DM Mono", ui-monospace, monospace; font-size: 11.5px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  border: 1.5px solid var(--border); }
+.chip.hit { color: var(--good); border-color: var(--good); }
+.chip.miss { color: var(--bad); border-color: var(--bad); }
+.chip.pending { color: var(--muted); }
+.chip.void { color: var(--muted); }
+.up { color: var(--good); } .down { color: var(--bad); } .flat { color: var(--muted); }
+.gray { color: var(--muted); }
+svg.chart { width: 100%; height: auto; display: block; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 0; margin: 8px 0; }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .zeroline { stroke: var(--baseline); stroke-width: 1.5; }
+svg .axis { fill: var(--muted); font-size: 10px;
+  font-family: "DM Mono", ui-monospace, monospace; }
+svg .ptlabel { fill: var(--ink2); font-size: 10px;
+  font-family: "DM Mono", ui-monospace, monospace; }
+svg .legend text { fill: var(--ink2); font-size: 10px;
+  font-family: "DM Mono", ui-monospace, monospace; }
+svg .band { fill: var(--band); }
+svg .s1line { stroke: var(--s1); stroke-width: 2; fill: none; }
+svg .s2line { stroke: var(--s2); stroke-width: 2; fill: none; }
+svg .s1dot { fill: var(--s1); }
+svg .windot { fill: var(--s1); }
+svg .lossdot { fill: var(--loss); }
+svg .scdot { fill: var(--s1); fill-opacity: 0.55; }
+svg .scdot:hover { fill-opacity: 1; }
+svg .hoverdot { fill: transparent; }
+svg .hoverdot:hover { fill: var(--s1); fill-opacity: 0.35; }
+svg .hoverdot2 { fill: transparent; }
+svg .hoverdot2:hover { fill: var(--s2); fill-opacity: 0.5; }
+svg.ivl { display: inline-block; vertical-align: middle; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; }
+footer.site { border-top: 3px double var(--baseline); margin-top: 40px;
+  padding: 14px 0; color: var(--ink2);
+  font-family: "DM Mono", ui-monospace, monospace; font-size: 12.5px; }
+input, select, button {
+  font: inherit; font-family: "DM Mono", ui-monospace, monospace; font-size: 14px;
+  color: var(--ink); background: var(--surface);
+  border: 1.5px solid var(--baseline); border-radius: 0; padding: 6px 8px; }
+button { cursor: pointer; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; border: 2px solid var(--ink); }
+button:hover { background: var(--hl); color: var(--hl-ink); border-color: var(--hl-ink); }
+.searchbox { width: 100%; max-width: 360px; margin: 8px 0; }
+.big { font-family: "DM Mono", ui-monospace, monospace; font-size: 34px;
+  font-weight: 700; background: var(--hl); color: var(--hl-ink);
+  padding: 0 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.pmbar { height: 14px; border-radius: 0; overflow: hidden; display: flex;
+  border: 1.5px solid var(--border); }
+.pmbar .a { background: var(--s1); } .pmbar .b { background: var(--loss); }
+

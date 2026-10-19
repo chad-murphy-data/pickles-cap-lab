@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "dataVersion": "v3-2026-10-07",
+  "dataSha256": "8f86ba5f6b8939f02d01c44e990b194c3bfb9afe24feaf9cb5bf392c1ca55a3e",
+  "objective": "Mean match-win probability against the six fixed reference profiles",
+  "pool": "Top 100 per gender by doubles rating",
+  "rules": {
+    "women": 3,
+    "men": 3,
+    "minimum": 500000,
+    "maximum": 1000000
+  },
+  "method": "Deterministic seeded multi-start annealing with single/paired swaps, including starts around each of the 20 most expensive players, followed by local refinement. Best and weakest found, not certified global optima.",
+  "seed": 20261018,
+  "evaluations": 207503,
+  "low": {
+    "cost": 510000,
+    "win": 0.018605184304306424
+  },
+  "high": {
+    "cost": 1000000,
+    "win": 0.5588439797074908
+  }
+}
