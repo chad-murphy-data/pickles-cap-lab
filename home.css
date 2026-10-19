@@ -21,7 +21,7 @@
 #pickleball-clubhouse .club-rules i{width:15px;height:15px;color:var(--club-ink)}
 #pickleball-clubhouse .club-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--club-space);row-gap:0}
 #pickleball-clubhouse .club-option{min-width:0;display:grid;grid-template-rows:subgrid;grid-row:span 5}
-#pickleball-clubhouse .club-preview{height:280px;border-radius:10px;display:flex;flex-direction:column;overflow:hidden}
+#pickleball-clubhouse .club-preview{height:280px;margin-bottom:18px;border-radius:10px;display:flex;flex-direction:column;overflow:hidden}
 #pickleball-clubhouse .club-builder-preview{background:var(--club-wash);padding:15px 19px}
 #pickleball-clubhouse .club-team-sheet{position:relative;isolation:isolate;border-radius:5px;padding:13px 14px;height:100%;display:flex;flex-direction:column}
 /* Tilt the paper, while its text and row dividers stay level. */
@@ -48,7 +48,7 @@
 #pickleball-clubhouse .club-next-pick{margin-top:auto;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:11px;color:var(--club-board-muted)}
 #pickleball-clubhouse .club-next-pick span:first-child{background:var(--club-lime);color:var(--club-lime-text);padding:4px 9px;border-radius:4px;font-weight:500}
 #pickleball-clubhouse .club-option-copy{display:contents}
-#pickleball-clubhouse .club-option-copy h2{margin-top:20px}
+#pickleball-clubhouse .club-option-copy h2{margin-top:0}
 #pickleball-clubhouse h2{font:500 23px/1.25 'DM Sans',sans-serif;letter-spacing:-.65px;margin:0 0 10px;color:var(--club-ink)}
 #pickleball-clubhouse .club-option-copy p{color:var(--club-secondary);font-size:14px;line-height:1.65;margin:0 0 18px;max-width:390px;min-height:46px}
 #pickleball-clubhouse .club-action{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;background:var(--club-button);color:var(--club-button-text);padding:12px 17px;border:0;border-radius:6px;min-height:44px;width:160px;justify-self:start;white-space:nowrap}
@@ -74,7 +74,7 @@
 #pickleball-clubhouse .club-detail .club-draft-name{font-size:16px}
 #pickleball-clubhouse .club-detail .club-next-pick{margin-top:16px}
 #pickleball-clubhouse .club-detail-note{font-size:12px;color:var(--club-secondary)}
-@media(max-width:650px){#pickleball-clubhouse .club-header{padding:16px min(var(--club-space),23px)}#pickleball-clubhouse .club-main{padding-inline:min(var(--club-space),23px)}#pickleball-clubhouse .club-brand-sub{display:none}#pickleball-clubhouse .club-header-right{gap:14px}#pickleball-clubhouse .club-header-right .club-quiet{font-size:12px}#pickleball-clubhouse h1{font-size:37px;letter-spacing:-1px}#pickleball-clubhouse .club-options{grid-template-columns:1fr;gap:34px}#pickleball-clubhouse .club-preview{height:auto;min-height:280px}#pickleball-clubhouse .club-intro p{font-size:15px}#pickleball-clubhouse .club-rules{font-size:12px;gap:7px 15px}#pickleball-clubhouse .club-player-name{font-size:12px}#pickleball-clubhouse .club-builder-preview{padding:14px}#pickleball-clubhouse .club-board-preview{padding:18px}#pickleball-clubhouse .club-option{display:block;grid-row:auto}#pickleball-clubhouse .club-option-copy{display:block;padding-top:17px}#pickleball-clubhouse .club-option-copy h2{margin-top:0}#pickleball-clubhouse .club-option-copy p{min-height:0}#pickleball-clubhouse .club-bottom{align-items:flex-start}#pickleball-clubhouse .club-bottom button{margin-left:0}}
+@media(max-width:650px){#pickleball-clubhouse .club-header{padding:16px min(var(--club-space),23px)}#pickleball-clubhouse .club-main{padding-inline:min(var(--club-space),23px)}#pickleball-clubhouse .club-brand-sub{display:none}#pickleball-clubhouse .club-header-right{gap:14px}#pickleball-clubhouse .club-header-right .club-quiet{font-size:12px}#pickleball-clubhouse h1{font-size:37px;letter-spacing:-1px}#pickleball-clubhouse .club-options{grid-template-columns:1fr;gap:34px}#pickleball-clubhouse .club-preview{height:auto;min-height:280px}#pickleball-clubhouse .club-intro p{font-size:15px}#pickleball-clubhouse .club-rules{font-size:12px;gap:7px 15px}#pickleball-clubhouse .club-player-name{font-size:12px}#pickleball-clubhouse .club-builder-preview{padding:14px}#pickleball-clubhouse .club-board-preview{padding:18px}#pickleball-clubhouse .club-option{display:block;grid-row:auto}#pickleball-clubhouse .club-option-copy{display:block;padding-top:0}#pickleball-clubhouse .club-option-copy h2{margin-top:0}#pickleball-clubhouse .club-option-copy p{min-height:0}#pickleball-clubhouse .club-bottom{align-items:flex-start}#pickleball-clubhouse .club-bottom button{margin-left:0}}
 @media(prefers-reduced-motion:reduce){#pickleball-clubhouse *{scroll-behavior:auto!important}}
 #pickleball-clubhouse .club-brand{text-decoration:none;color:var(--club-ink)}
 #pickleball-clubhouse .club-quiet{font:400 13px var(--body);text-decoration:none;color:var(--club-secondary)}
